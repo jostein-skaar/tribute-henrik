@@ -1,4 +1,11 @@
 body {
   overflow: hidden;
-  margin: 0px;
+  margin: 0px;  
+}
+
+progress#loading {
+  position:absolute;  
+  width: 60vw;
+  left: 50%;
+  transform: translate(-50%, 20px);
 }
