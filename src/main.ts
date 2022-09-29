@@ -39,7 +39,7 @@ let model: GLTF;
 const loader = new GLTFLoader();
 const loadingbar: HTMLProgressElement = document.querySelector('progress#loading')!;
 loader.load(
-  'henrik.glb',
+  'Henrik model 2.glb',
   function (_model) {
     model = _model;
     model.scene.position.set(0, -3, 0);
