@@ -3,7 +3,6 @@ import './style.css';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTF, GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
 
 let isDebug = true;
 
@@ -38,18 +37,21 @@ new OrbitControls(camera, renderer.domElement);
 
 let model: GLTF;
 const loader = new GLTFLoader();
-const loadingbar:HTMLProgressElement = document.querySelector('progress#loading')!;
-loader.load('henrik.glb', function (_model) {
-  model = _model;
-  model.scene.position.set(0, -3, 0);
-  scene.add(model.scene);
-  loadingbar.style.display = 'none';
-}, (xhr) => {  
-  const percent = (xhr.loaded / xhr.total) * 100;
-  loadingbar.value = percent;
-  loadingbar.innerText = percent + '%';  
-},);
-
+const loadingbar: HTMLProgressElement = document.querySelector('progress#loading')!;
+loader.load(
+  'henrik.glb',
+  function (_model) {
+    model = _model;
+    model.scene.position.set(0, -3, 0);
+    scene.add(model.scene);
+    loadingbar.style.display = 'none';
+  },
+  (xhr) => {
+    const percent = (xhr.loaded / xhr.total) * 100;
+    loadingbar.value = percent;
+    loadingbar.innerText = percent + '%';
+  }
+);
 
 window.addEventListener('resize', onWindowResize, false);
 function onWindowResize() {
